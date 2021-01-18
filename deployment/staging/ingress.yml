@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: mmpl-tendenci-ingress
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    cert-manager.io/cluster-issuer: letsencrypt-staging
+spec:
+  tls:
+    - hosts:
+        - test.mmpl.bennyda.ninja
+      secretName: mmpl-tendenci-issuer-staging
+  rules:
+    - host: "test.mmpl.bennyda.ninja"
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: mmpl-tendenci-service
+                port:
+                  number: 80
