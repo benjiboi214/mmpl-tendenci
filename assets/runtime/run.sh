@@ -41,7 +41,7 @@ function create_tendenci_project()
     cd "$TENDENCI_INSTALL_DIR"
     tendenci startproject "$APP_NAME" "$APP_NAME"
     cd "$APP_NAME"
-    $PIP install  -r requirements/dev.txt --upgrade
+    $PIP install  -r requirements/prod.txt --upgrade
 
     #Install theme
     echo "Installing theme" && echo ""
