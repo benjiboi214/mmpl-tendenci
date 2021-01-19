@@ -4,6 +4,7 @@ PYTHON=$(which python3)
 
 function install_tendenci()
 {
+    echo "Installing Tendeci"  && echo ""
     source "$TENDENCI_HOME/install.sh"
 }
 
