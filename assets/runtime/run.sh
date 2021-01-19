@@ -2,13 +2,6 @@
 
 PYTHON=$(which python3)
 
-ls "/home/tendenci/install/mysite"
-ls "/var/log/mysite"
-
-function install_tendenci()
-{
-    source "$TENDENCI_HOME/install.sh"
-}
 
 function setup_keys()
 {
@@ -95,7 +88,6 @@ function run
 
 
 if [ ! -f "$TENDENCI_PROJECT_ROOT/conf/first_run" ]; then
-    install_tendenci
     setup_keys
     create_settings
     initial_setup
