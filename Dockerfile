@@ -2,6 +2,7 @@ FROM ubuntu:18.04
 MAINTAINER Tendenci <programmers@tendenci.com>
 
 ENV APP_NAME="mysite" \
+    APP_CONFIG_DIR="/home/tendenci/config" \
     TENDENCI_USER="tendenci" \
     TENDENCI_HOME="/home/tendenci" \
     TENDENCI_LOG_DIR="/var/log/mysite" \
@@ -27,10 +28,10 @@ ENV LANG='en_US.UTF-8' LANGUAGE='en_US:en' LC_ALL='en_US.UTF-8'
 
 COPY assets/build/ "$TENDENCI_HOME"
 COPY assets/runtime/run.sh /runtime/run.sh
+COPY assets/runtime/config.sh /runtime/config.sh
+COPY config/ "$APP_CONFIG_DIR"
 
 RUN bash -x "$TENDENCI_HOME/install.sh"
-
-# VOLUME "$TENDENCI_PROJECT_ROOT" "$TENDENCI_LOG_DIR"
 
 WORKDIR "$TENDENCI_INSTALL_DIR"
 
