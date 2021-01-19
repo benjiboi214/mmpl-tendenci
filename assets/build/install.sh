@@ -65,8 +65,3 @@ function create_cronjobs()
     (crontab -l ; echo "30   2 * * * $PYTHON $TENDENCI_INSTALL_DIR/manage.py process_unindexed") | crontab -
 
 }
-
-check_user
-check_dirs
-install_tendenci
-create_cronjobs

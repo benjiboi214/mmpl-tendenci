@@ -2,10 +2,14 @@
 
 PYTHON=$(which python3)
 
-function install_tendenci()
+function start_install()
 {
     echo "Installing Tendeci"  && echo ""
     source "$TENDENCI_HOME/install.sh"
+    check_user
+    check_dirs
+    install_tendenci
+    create_cronjobs
 }
 
 function setup_keys()
@@ -93,7 +97,7 @@ function run
 
 
 if [ ! -f "$TENDENCI_PROJECT_ROOT/conf/first_run" ]; then
-    install_tendenci
+    start_install
     setup_keys
     create_settings
     initial_setup
