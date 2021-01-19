@@ -8,10 +8,10 @@ metadata:
 spec:
   tls:
     - hosts:
-        - test.mmpl.bennyda.ninja
+        - tendenci.mmpl.test.jetselliot.com
       secretName: mmpl-tendenci-issuer-staging
   rules:
-    - host: "test.mmpl.bennyda.ninja"
+    - host: "tendenci.mmpl.test.jetselliot.com"
       http:
         paths:
           - path: /
