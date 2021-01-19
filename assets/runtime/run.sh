@@ -2,6 +2,11 @@
 
 PYTHON=$(which python3)
 
+function install_tendenci()
+{
+    source "$TENDENCI_HOME/install.sh"
+}
+
 function setup_keys()
 {
     echo "Creating secret keys"  && echo ""
@@ -87,6 +92,7 @@ function run
 
 
 if [ ! -f "$TENDENCI_PROJECT_ROOT/conf/first_run" ]; then
+    install_tendenci
     setup_keys
     create_settings
     initial_setup
