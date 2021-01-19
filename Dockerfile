@@ -28,7 +28,7 @@ ENV LANG='en_US.UTF-8' LANGUAGE='en_US:en' LC_ALL='en_US.UTF-8'
 COPY assets/build/ "$TENDENCI_HOME"
 COPY assets/runtime/run.sh /runtime/run.sh
 
-# RUN bash -x "$TENDENCI_HOME/install.sh"
+RUN bash -x "$TENDENCI_HOME/install.sh"
 
 VOLUME "$TENDENCI_PROJECT_ROOT" "$TENDENCI_LOG_DIR"
 
