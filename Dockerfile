@@ -1,14 +1,14 @@
 FROM ubuntu:18.04
 MAINTAINER Tendenci <programmers@tendenci.com>
 
-# ENV APP_NAME="mysite" \
-#     TENDENCI_USER="tendenci" \
-#     TENDENCI_HOME="/home/tendenci" \
-#     TENDENCI_LOG_DIR="/var/log/mysite" \
-#     TENDENCI_INSTALL_DIR="/home/tendenci/install" \
-#     TENDENCI_PROJECT_ROOT="/home/tendenci/install/mysite"
+ENV APP_NAME="mysite" \
+    TENDENCI_USER="tendenci" \
+    TENDENCI_HOME="/home/tendenci" \
+    TENDENCI_LOG_DIR="/var/log/mysite" \
+    TENDENCI_INSTALL_DIR="/home/tendenci/install" \
+    TENDENCI_PROJECT_ROOT="/home/tendenci/install/mysite"
 
-# RUN mkdir "$TENDENCI_HOME" "$TENDENCI_LOG_DIR" "$TENDENCI_INSTALL_DIR"
+RUN mkdir "$TENDENCI_HOME" "$TENDENCI_LOG_DIR" "$TENDENCI_INSTALL_DIR"
 
 # RUN    DEBIAN_FRONTEND=noninteractive apt-get update -y \
 #     && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends apt-utils \
@@ -37,4 +37,4 @@ MAINTAINER Tendenci <programmers@tendenci.com>
 # ENTRYPOINT [ "/bin/bash" ]
 # CMD [ "/runtime/run.sh" ]
 
-ENTRYPOINT [ "ls -la /home/tendenci/install/mysite/lost+found" ]
+ENTRYPOINT [ "ls -la $TENDENCI_PROJECT_ROOT" ]
