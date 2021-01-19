@@ -11,4 +11,12 @@ function install_tendenci()
     $PIP install tendenci
 }
 
+function install_dependencies()
+{
+    # Installing Production Deps
+    echo "Installing Production Deps" && echo ""
+    $PIP install  -r "$APP_CONFIG_DIR"/requirements/prod.txt --upgrade
+}
+
 install_tendenci
+install_dependencies
