@@ -8,8 +8,7 @@ copy_config()
 {
   # Preparing directories
   echo "Copying config from image to volume" && echo ""
-  cp -r "$APP_CONFIG_DIR" "$TENDENCI_PROJECT_ROOT"/conf
-
+  cp -r "$APP_CONFIG_DIR"/* "$TENDENCI_PROJECT_ROOT"/conf
 }
 
 check_directory_permissions()
