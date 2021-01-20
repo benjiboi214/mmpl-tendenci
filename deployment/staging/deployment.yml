@@ -6,15 +6,37 @@ spec:
   selector:
     matchLabels:
       app: mmpl-tendenci-web-template
-  replicas: 2
+  replicas: 1
   template:
     metadata:
       labels: # labels to select/identify the deployment
         app: mmpl-tendenci-web-template
     spec: # pod spec
+      initContainers:
+        - name: mmpl-tendenci-config-copy
+          image: benjiboi214/mmpl-tendenci:cicd_test
+          imagePullPolicy: Always
+          command: ["/bin/bash"]
+          args: ["/runtime/config.sh"]
+          volumeMounts:
+            - mountPath: "/home/tendenci/install"
+              name: mmpl-tendenci-test-project
       containers:
         - name: mmpl-tendenci-web
           image: benjiboi214/mmpl-tendenci:cicd_test # image we pushed
+          volumeMounts:
+            - mountPath: "/home/tendenci/install"
+              name: mmpl-tendenci-test-project
+            - mountPath: "/var/log/mysite"
+              name: mmpl-tendenci-test-log
           imagePullPolicy: Always
           ports:
-            - containerPort: 3000
+            - containerPort: 8000
+            ## Secrets
+      volumes:
+        - name: mmpl-tendenci-test-project
+          persistentVolumeClaim:
+            claimName: mmpl-tendenci-test-project
+        - name: mmpl-tendenci-test-log
+          persistentVolumeClaim:
+            claimName: mmpl-tendenci-test-log
