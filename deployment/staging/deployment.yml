@@ -31,6 +31,8 @@ spec:
               name: mmpl-tendenci-test-project
             - mountPath: "/var/log/mysite"
               name: mmpl-tendenci-test-log
+            - mountPath: "/home/tendenci/cert"
+              name: tendenci-cert
           imagePullPolicy: Always
           ports:
             - containerPort: 8000
@@ -102,3 +104,6 @@ spec:
         - name: mmpl-tendenci-test-log
           persistentVolumeClaim:
             claimName: mmpl-tendenci-test-log
+        - name: tendenci-cert
+          secret:
+            secretName: tendenci-cert
