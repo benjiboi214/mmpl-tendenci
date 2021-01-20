@@ -18,6 +18,8 @@ spec:
           imagePullPolicy: Always
           command: ["/bin/bash"]
           args: ["/runtime/config.sh"]
+          # command: ["echo"]
+          # args: ["Intitial Run"]
           volumeMounts:
             - mountPath: "/home/tendenci/install"
               name: mmpl-tendenci-test-project
@@ -63,6 +65,11 @@ spec:
                 secretKeyRef:
                   name: tendenci-postgres
                   key: conn-max-age
+            - name: DB_CERTIFICATE
+              valueFrom: 
+                secretKeyRef:
+                  name: tendenci-postgres
+                  key: certificate
             - name: ADMIN_USER
               valueFrom: 
                 secretKeyRef:
