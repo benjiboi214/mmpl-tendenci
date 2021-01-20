@@ -94,18 +94,18 @@ TIME_ZONE = os.getenv('TIMEZONE', default='Australia/Melbourne')
 
 # Uncomment if this site supports HTTPS.
 # This will cause the login page and other sensitive pages to require HTTPS.
-# SSL_ENABLED = True
+SSL_ENABLED = True
 
 # Uncomment if using NGINX.
 # This will allow Tendenci to properly detect HTTP vs HTTPS client connections
 # when using NGINX.  DO NOT use this if Tendenci is not behind NGINX, as that
 # will open a security hole.
-#SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Uncomment these if NGINX is configured to redirect all HTTP connections to
 # HTTPS.  This is strongly recommended for live sites.
-#SESSION_COOKIE_SECURE = True  # Send Session Cookie over HTTPS only
-#CSRF_COOKIE_SECURE = True  # Send CSRF Cookie over HTTPS only
+SESSION_COOKIE_SECURE = True  # Send Session Cookie over HTTPS only
+CSRF_COOKIE_SECURE = True  # Send CSRF Cookie over HTTPS only
 
 # Depending on configuration, logged in users may either be logged out when the
 # user closes their browser, or may remain logged in after the user closes and
@@ -327,9 +327,9 @@ set_console_log_level('DEBUG')
 #LOGGING['loggers']['py.warnings'].pop('filters', None)
 
 # To use Sentry (https://docs.sentry.io/):
-#SENTRY_DSN = ''
-#INSTALLED_APPS += ['raven.contrib.django.raven_compat']
-#RAVEN_CONFIG = {'dsn': SENTRY_DSN}
+SENTRY_DSN = 'https://7e8c6cc1a23d492789d1427e885413ad@o282767.ingest.sentry.io/5600904'
+INSTALLED_APPS += ['raven.contrib.django.raven_compat']
+RAVEN_CONFIG = {'dsn': SENTRY_DSN}
 
 
 # ---------------------------------------------------------------------------- #
