@@ -71,7 +71,7 @@ DATABASES['default']['PORT'] = os.getenv('DB_PORT')
 DATABASES['default']['USER'] = os.getenv('DB_USER')
 DATABASES['default']['PASSWORD'] = os.getenv('DB_PASS')
 DATABASES['default']['NAME'] = os.getenv('DB_NAME')
-DATABASES['default']['CONN_MAX_AGE'] = os.getenv('DB_CONN_MAX_AGE')
+DATABASES['default']['CONN_MAX_AGE'] = int(os.getenv('DB_CONN_MAX_AGE'))
 
 # This must be set to the time zone used by PostgreSQL, which defaults to the
 # system time zone configured in /etc/timezone.
