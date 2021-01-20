@@ -18,8 +18,6 @@ spec:
           imagePullPolicy: Always
           command: ["/bin/bash"]
           args: ["/runtime/config.sh"]
-          # command: ["echo"]
-          # args: ["Intitial Run"]
           volumeMounts:
             - mountPath: "/home/tendenci/install"
               name: mmpl-tendenci-test-project
