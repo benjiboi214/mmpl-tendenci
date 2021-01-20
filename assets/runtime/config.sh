@@ -15,10 +15,9 @@ check_directory_permissions()
 {
   # Preparing directories
   echo "Preparing directories" && echo ""
-  mkdir "$TENDENCI_PROJECT_ROOT"/static
-  chown "$TENDENCI_USER:" /var/log/"$APP_NAME"/
+  chown "$TENDENCI_USER" /var/log/"$APP_NAME"/
   chmod -R -x+X,g+rw,o-rwx /var/log/"$APP_NAME"/
-  chown -R "$TENDENCI_USER:" "$TENDENCI_HOME"
+  chown -R "$TENDENCI_USER" "$TENDENCI_HOME"
   chmod -R -x+X,g-w,o-rwx "$TENDENCI_PROJECT_ROOT"/
   chmod +x                "$TENDENCI_PROJECT_ROOT"/manage.py
   chmod -R ug-x+rwX,o-rwx "$TENDENCI_PROJECT_ROOT"/media/ 
