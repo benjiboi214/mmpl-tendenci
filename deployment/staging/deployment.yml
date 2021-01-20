@@ -32,7 +32,62 @@ spec:
           imagePullPolicy: Always
           ports:
             - containerPort: 8000
-            ## Secrets
+          env:
+            - name: DB_USER
+              valueFrom: 
+                secretKeyRef:
+                  name: tendenci-postgres
+                  key: user
+            - name: DB_NAME
+              valueFrom: 
+                secretKeyRef:
+                  name: tendenci-postgres
+                  key: db-name
+            - name: DB_PASS
+              valueFrom: 
+                secretKeyRef:
+                  name: tendenci-postgres
+                  key: pass
+            - name: DB_HOST
+              valueFrom: 
+                secretKeyRef:
+                  name: tendenci-postgres
+                  key: host
+            - name: DB_PORT
+              valueFrom: 
+                secretKeyRef:
+                  name: tendenci-postgres
+                  key: port
+            - name: DB_CONN_MAX_AGE
+              valueFrom: 
+                secretKeyRef:
+                  name: tendenci-postgres
+                  key: conn-max-age
+            - name: ADMIN_USER
+              valueFrom: 
+                secretKeyRef:
+                  name: tendenci-admin
+                  key: user
+            - name: ADMIN_MAIL
+              valueFrom: 
+                secretKeyRef:
+                  name: tendenci-admin
+                  key: mail
+            - name: ADMIN_PASS
+              valueFrom: 
+                secretKeyRef:
+                  name: tendenci-admin
+                  key: pass
+            - name: DJANGO_SECRET_KEY
+              valueFrom: 
+                secretKeyRef:
+                  name: tendenci-django
+                  key: secret-key
+            - name: DJANGO_SITE_SETTINGS_KEY
+              valueFrom: 
+                secretKeyRef:
+                  name: tendenci-django
+                  key: site-settings-key
       volumes:
         - name: mmpl-tendenci-test-project
           persistentVolumeClaim:
