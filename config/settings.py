@@ -73,6 +73,12 @@ DATABASES['default']['PASSWORD'] = os.getenv('DB_PASS')
 DATABASES['default']['NAME'] = os.getenv('DB_NAME')
 DATABASES['default']['CONN_MAX_AGE'] = int(os.getenv('DB_CONN_MAX_AGE'))
 
+if os.getenv('DB_CERTIFICATE'):
+    DATABASES['default']['OPTIONS'] = {
+        'sslmode': 'require',
+        'sslrootcert': os.getenv('DB_CERTIFICATE')
+    }
+
 # This must be set to the time zone used by PostgreSQL, which defaults to the
 # system time zone configured in /etc/timezone.
 # To change the PostgreSQL time zone without changing the system time zone:
