@@ -25,5 +25,14 @@ check_directory_permissions()
   chmod -R ug-x+rwX,o-rwx "$TENDENCI_PROJECT_ROOT"/whoosh_index/   
 }
 
+set_site_url()
+{
+  # Set Site URL
+  echo "Setting Site URL" && echo ""
+  cd "$TENDENCI_PROJECT_ROOT"
+  "$PYTHON" manage.py set_setting site global siteurl "https://tendenci.mmpl.test.jetselliot.com/" 	
+}
+
 copy_config
 check_directory_permissions
+set_site_url
