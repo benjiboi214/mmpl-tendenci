@@ -296,8 +296,8 @@ set_debug_log_filename('/var/log/mysite/debug.log')
 #set_app_log_level('INFO')
 
 # To disable logging:
-disable_app_log()
-disable_debug_log()
+# disable_app_log()
+# disable_debug_log()
 
 # To disable debug.log and write DEBUG messages to app.log when DEBUG is True:
 #disable_debug_log()
@@ -307,7 +307,7 @@ disable_debug_log()
 # files if they are disabled above):
 enable_console_log()
 # To change the console log level:
-#set_console_log_level('INFO')
+set_console_log_level('DEBUG')
 
 # For more advanced configuration, you can modify the default LOGGING data
 # structure, which is configured in
