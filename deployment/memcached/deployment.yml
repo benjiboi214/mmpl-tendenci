@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mmpl-memcached-deployment
+spec:
+  selector:
+    matchLabels:
+      app: mmpl-memcached-template
+  replicas: 1
+  template:
+    metadata:
+      labels: # labels to select/identify the deployment
+        app: mmpl-memcached-template
+    spec: # pod spec
+      containers:
+        - name: mmpl-memcached-container
+          image: memcached:latest
+          ports:
+            - containerPort: 11211

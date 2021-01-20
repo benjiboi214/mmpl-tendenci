@@ -60,6 +60,10 @@ ALLOWED_HOSTS = ['tendenci.mmpl.test.jetselliot.com']
 if DEBUG:
     ALLOWED_HOSTS += ['localhost', '127.0.0.1', '[::1]']
 
+CACHES['default']['BACKEND'] = 'django.core.cache.backends.memcached.PyLibMCCache'
+CACHES['default']['LOCATION'] = 'mmpl-memcached-service:11211'
+CACHES['default']['TIMEOUT'] = 60*60*24*30
+
 # Tendenci uses the following PostgreSQL database connection settings by
 # default.  Uncomment and configure settings here to override the defaults.
 DATABASES['default']['HOST'] = os.getenv('DB_HOST')

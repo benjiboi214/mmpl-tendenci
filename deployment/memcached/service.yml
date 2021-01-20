@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mmpl-memcached-service
+spec:
+  ports:
+    - protocol: TCP
+      port: 11211
+      targetPort: 11211
+  selector:
+    app: mmpl-memcached-template
