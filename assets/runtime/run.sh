@@ -133,7 +133,7 @@ function initial_setup
     "$PYTHON" manage.py deploy
     "$PYTHON" manage.py load_tendenci_defaults
     "$PYTHON" manage.py update_dashboard_stats
-    "$PYTHON" manage.py set_setting site global siteurl "$SITE_URL" 	
+    "$PYTHON" manage.py set_setting site global siteurl "https://tendenci.mmpl.test.jetselliot.com/" 	
 
     create_superuser
     
