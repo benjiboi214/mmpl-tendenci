@@ -91,7 +91,8 @@ function initial_setup
     "$PYTHON" manage.py deploy
     "$PYTHON" manage.py load_tendenci_defaults
     "$PYTHON" manage.py update_dashboard_stats
-    "$PYTHON" manage.py set_setting site global siteurl "https://tendenci.mmpl.test.jetselliot.com/" 	
+    
+    set_site_url
 
     create_superuser
     
@@ -113,6 +114,14 @@ function run
     && "$PYTHON" manage.py runserver 0.0.0.0:8000
 }
 
+set_site_url()
+{
+  # Set Site URL
+  echo "Setting Site URL" && echo ""
+  cd "$TENDENCI_PROJECT_ROOT"
+  "$PYTHON" manage.py set_setting site global siteurl "https://tendenci.mmpl.test.jetselliot.com/" 	
+}
+
 
 if [ ! -f "$TENDENCI_PROJECT_ROOT/conf/first_run" ]; then
     check_user
@@ -125,5 +134,6 @@ if [ ! -f "$TENDENCI_PROJECT_ROOT/conf/first_run" ]; then
 fi
 
 if [ -f "$TENDENCI_PROJECT_ROOT/conf/first_run" ]; then
+    set_site_url
     run "$@"
 fi
