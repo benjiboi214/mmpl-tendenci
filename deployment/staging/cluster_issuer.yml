@@ -1,18 +1,18 @@
 apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
 metadata:
-  name: letsencrypt-staging
+  name: tendenci-issuer-production
 spec:
   acme:
     # You must replace this email address with your own.
     # Let's Encrypt will use this to contact you about expiring
     # certificates, and issues related to your account.
     email: benjiboi214@gmail.com
-    server: https://acme-staging-v02.api.letsencrypt.org/directory
+    server: https://acme-v02.api.letsencrypt.org/directory
     preferredChain: "ISRG Root X1"
     privateKeySecretRef:
       # Secret resource that will be used to store the account's private key.
-      name: mmpl-tendenci-issuer-staging
+      name: mmpl-tendenci-cert-production
     # Add a single challenge solver, HTTP01 using nginx
     solvers:
       - http01:

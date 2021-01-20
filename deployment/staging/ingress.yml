@@ -4,12 +4,12 @@ metadata:
   name: mmpl-tendenci-ingress
   annotations:
     kubernetes.io/ingress.class: "nginx"
-    cert-manager.io/cluster-issuer: letsencrypt-staging
+    cert-manager.io/cluster-issuer: tendenci-issuer-production
 spec:
   tls:
     - hosts:
         - tendenci.mmpl.test.jetselliot.com
-      secretName: mmpl-tendenci-issuer-staging
+      secretName: mmpl-tendenci-cert-production
   rules:
     - host: "tendenci.mmpl.test.jetselliot.com"
       http:
